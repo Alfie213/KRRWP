@@ -42,7 +42,18 @@
 
 if(isset($_REQUEST['add']))
 {
-    print('add');
+    require('data.php');
+    $con = mysqli_connect($host, $user, $pas) or die ('Error con');
+    mysqli_select_db($con, $db) or die ('Error db');
+    // $tsk = $_REQUEST['tasks'];
+    // $ins = "INSERT INTO tasks (task, idUser) VALUES ('".$tsk."','".$_SESSION["idUser"]."')";
+    $ins = "INSERT INTO `expenses`(`article`, `min`, `sum`, `date`) VALUES ('".$_REQUEST['article']."','".$_REQUEST['min']."','".$_REQUEST['sum']."','".$_REQUEST['date']."')";
+    if(trim($_REQUEST['article']) && trim($_REQUEST['min']) && trim($_REQUEST['sum']) && trim($_REQUEST['date']))
+    {
+        mysqli_query($con, $ins);
+        header('Location: index.php');
+    }
+    else print('somenul');
 }
 
 ?>
