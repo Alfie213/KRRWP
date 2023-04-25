@@ -42,6 +42,50 @@
         print("</div>");
         ?>
     </ul>
+
+    <h1>Доходы<h1>
+    <form action="" method="get">
+        <select name="articleD">
+            <option value="Еда">Еда</option>
+            <option value="Развлечения">Развлечения</option>
+            <option value="Бизнес">Бизнес</option>
+        </select>
+        <input type="text" name="minD" id="tasks" placeholder="Наим">
+        <input type="text" name="sumD" id="tasks" placeholder="Сумма">
+        <input type="text" name="dateD" id="tasks" placeholder="Дата">
+        <input type="submit" name="addD" id="ins" value="Добавить">
+        
+    </form>
+
+    <ul>
+        <?php
+        require('data.php');
+        $con = mysqli_connect($host, $user, $pas) or die ('Error con');
+        mysqli_select_db($con, $db) or die ('Error db');
+        $request = "SELECT * FROM income";
+        // print( $request);
+        $res = mysqli_query($con, $request);
+        print("<div class='container'>");
+        print("<section class='tasks'>");
+        print("<form action='todolist.php' method='get'>");
+        print("<ul class='tasks__list'>");
+        foreach($res as $result)
+        {
+            print("
+            <li class='tsk'>
+                <label class='coolText'>".$result['article']."</label>
+                <label class='coolText'>".$result['min']."</label>
+                <label class='coolText'>".$result['sum']."</label>
+                <label class='coolText'>".$result['date']."</label>
+            </li>
+            ");
+        }
+        print("</ul>");
+        print("</form>");
+        print("</section>");
+        print("</div>");
+        ?>
+    </ul>
 </div>
 
 <?php
@@ -55,6 +99,22 @@ if(isset($_REQUEST['add']))
     // $ins = "INSERT INTO tasks (task, idUser) VALUES ('".$tsk."','".$_SESSION["idUser"]."')";
     $ins = "INSERT INTO `expenses`(`article`, `min`, `sum`, `date`) VALUES ('".$_REQUEST['article']."','".$_REQUEST['min']."','".$_REQUEST['sum']."','".$_REQUEST['date']."')";
     if(trim($_REQUEST['article']) && trim($_REQUEST['min']) && trim($_REQUEST['sum']) && trim($_REQUEST['date']))
+    {
+        mysqli_query($con, $ins);
+        header('Location: index.php');
+    }
+    else print('somenul');
+}
+
+if(isset($_REQUEST['addD']))
+{
+    require('data.php');
+    $con = mysqli_connect($host, $user, $pas) or die ('Error con');
+    mysqli_select_db($con, $db) or die ('Error db');
+    // $tsk = $_REQUEST['tasks'];
+    // $ins = "INSERT INTO tasks (task, idUser) VALUES ('".$tsk."','".$_SESSION["idUser"]."')";
+    $ins = "INSERT INTO `income`(`article`, `min`, `sum`, `date`) VALUES ('".$_REQUEST['articleD']."','".$_REQUEST['minD']."','".$_REQUEST['sumD']."','".$_REQUEST['dateD']."')";
+    if(trim($_REQUEST['articleD']) && trim($_REQUEST['minD']) && trim($_REQUEST['sumD']) && trim($_REQUEST['dateD']))
     {
         mysqli_query($con, $ins);
         header('Location: index.php');

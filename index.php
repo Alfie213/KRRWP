@@ -4,7 +4,7 @@ require('header.html');
 
 require('calc.php');
 
-require('footer.html');
+// require('footer.html');
 
 ?>
 
