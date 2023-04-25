@@ -1,8 +1,10 @@
 <div class="content">
     <form action="" method="get">
-        <input type="text" name="tasks" id="tasks" placeholder="task">
-        <input type="submit" name="ins" id="ins" value="Добавить">
-        <input type="submit" name="exit" value="Выход">
+        <input type="text" name="article" id="tasks" placeholder="Статья">
+        <input type="text" name="min" id="tasks" placeholder="Наим">
+        <input type="text" name="sum" id="tasks" placeholder="Сумма">
+        <input type="text" name="date" id="tasks" placeholder="Дата">
+        <input type="submit" name="add" id="ins" value="Добавить">
     </form>
 
     <ul>
@@ -32,47 +34,24 @@
         print("</form>");
         print("</section>");
         print("</div>");
-
-        // if(file_get_contents('form.php'))
-        // {
-        //     require('form.php');
-        //     print("
-        //     <div id='registration'>
-        //         <div id='blackout'>
-        //             <div id='window'>
-        //                 <p> Changing name </p>
-        //                 <p> Type new name: </p>
-        //                 <form action='todolist.php' method='get'>
-        //                 <input type='text' name='name' placeholder='Type new Name' value='".$name."'>
-        //                 <!-- <p> Password: </p>
-        //                 <input type='password' name='password' placeholder='Type your password'> -->
-
-        //                 <button type='submit' name='change' value='"."$id"."'>Change name</button>
-        //                 <a href='./todolist.php?name=someVal&close=' class='close'> Закрыть окно </a>
-        //                 </form>
-        //             </div>
-        //         </div>
-        //     </div>  
-        //     ");
-        // }
-        if(isset($_REQUEST['close']))
-        {
-            $fp = fopen("form.php", "a"); // Открываем файл в режиме записи
-            file_put_contents("form.php", ''); // Стираем содержимое.
-            header('Location: index.php');
-        }
         ?>
     </ul>
 </div>
 
 <?php
-if(isset($_REQUEST['exit']))
+
+if(isset($_REQUEST['add']))
 {
-    $_SESSION = array();
-    session_destroy();
-    header('Location: auth.php');
+    print('add');
 }
+
 ?>
+
+
+
+
+
+
 
 <?php
 if(isset($_REQUEST['done']))
