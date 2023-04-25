@@ -3,6 +3,6 @@
 $host = 'localhost';
 $user = 'root';
 $pas = '';
-$db = 'todo';
+$db = 'calc';
 
 ?>

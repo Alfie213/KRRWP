@@ -10,7 +10,7 @@
         require('data.php');
         $con = mysqli_connect($host, $user, $pas) or die ('Error con');
         mysqli_select_db($con, $db) or die ('Error db');
-        $request = "SELECT * FROM tasks WHERE idUser = 1";
+        $request = "SELECT * FROM expenses";
         // print( $request);
         $res = mysqli_query($con, $request);
         print("<div class='container'>");
@@ -21,22 +21,10 @@
         {
             print("
             <li class='tsk'>
-                <label class='coolText'>".$result['task']."</label>
-                <button type='submit' name='done' value='".$result['id']."'>Checked/Unchecked</button>
-
-                <input type='checkbox' name='checkbox' disabled='disabled' value='".$result['id']."'");
-                if($result['isDone'] == 1)
-                {
-                    print("checked>");
-                }
-                else
-                {
-                    print(">");
-                }
-
-                print("
-                <button type='submit' name='edit' value='".$result['id']."'>Редактировать</button>
-                <button type='submit' name='delete' value='".$result['id']."'>Удалить</button>
+                <label class='coolText'>".$result['article']."</label>
+                <label class='coolText'>".$result['min']."</label>
+                <label class='coolText'>".$result['sum']."</label>
+                <label class='coolText'>".$result['date']."</label>
             </li>
             ");
         }
