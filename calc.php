@@ -1,10 +1,16 @@
 <div class="content">
+    <h1>Расходы<h1>
     <form action="" method="get">
-        <input type="text" name="article" id="tasks" placeholder="Статья">
+        <select name="article">
+            <option value="Еда">Еда</option>
+            <option value="Развлечения">Развлечения</option>
+            <option value="Бизнес">Бизнес</option>
+        </select>
         <input type="text" name="min" id="tasks" placeholder="Наим">
         <input type="text" name="sum" id="tasks" placeholder="Сумма">
         <input type="text" name="date" id="tasks" placeholder="Дата">
         <input type="submit" name="add" id="ins" value="Добавить">
+        
     </form>
 
     <ul>
