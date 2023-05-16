@@ -43,7 +43,7 @@ foreach($res as $result) {
             var data = google.visualization.arrayToDataTable([ 
                 ['Category', 'Sum'], 
                 ['Еда', <?php echo $summa1; ?>], 
-                ['Развлечения', <?php echo $summa2; ?>], 
+                ['Какая-то', <?php echo $summa2; ?>], 
                 ['Бизнес', <?php echo $summa3; ?>] 
             ]); 
 
