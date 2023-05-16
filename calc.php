@@ -10,7 +10,6 @@
         <input type="text" name="sum" id="tasks" placeholder="Сумма">
         <input type="text" name="date" id="tasks" placeholder="Дата">
         <input type="submit" name="add" id="ins" value="Добавить">
-        <input type="submit" name="summa" id="ins" value="SUMMA">
         
     </form>
 
@@ -87,87 +86,6 @@
         print("</div>");
         ?>
     </ul>
-
-<?php
-
-if(isset($_REQUEST['summa']))
-{
-    require('data.php');
-    $con = mysqli_connect($host, $user, $pas) or die ('Error con');
-    mysqli_select_db($con, $db) or die ('Error db');
-    $query = "SELECT `sum` FROM `expenses` WHERE `article`='Еда'";
-    $res = mysqli_query($con, $query);
-    $summa = 0;
-    foreach($res as $result)
-    {
-        $summa += array_sum($result);
-    }
-    print($summa);
-}
-
-// print("
-// <script src='https://www.google.com/jsapi'></script>
-// <script>
-// google.load('visualization', '1', {packages:['corechart']});
-// google.setOnLoadCallback(drawChart);
-// function drawChart() {
-// var data = google.visualization.arrayToDataTable([
-//     ['Eda', 'Enter', 'Busi'],
-//     ['Eda',     ".printEdaSum()."],
-//     ['Enter', ".printEnterSum()."],
-//     ['Busi', ".printBusiSum()."],
-// ]);
-// var options = {
-//     title: 'Done/Undone',
-//     is3D: true
-// };
-// var chart = new google.visualization.PieChart(document.getElementById('air'));
-// chart.draw(data, options);
-// }
-// </script>
-// ");
-
-// function printEdaSum()
-// {
-//     require('data.php');
-//     $con = mysqli_connect($host, $user, $pas) or die ('Error con');
-//     mysqli_select_db($con, $db) or die ('Error db');
-//     $query = "SELECT COUNT(`isDone`) FROM `tasks` WHERE `idUser`='".$_SESSION["idUser"]."' AND `isDone` = 1";
-//     $res = mysqli_query($con, $query);
-//     foreach($res as $result)
-//     {
-//         return($result['COUNT(`isDone`)']);
-//     }
-// }
-
-// function printEnterSum()
-// {
-//     require('data.php');
-//     $con = mysqli_connect($host, $user, $pas) or die ('Error con');
-//     mysqli_select_db($con, $db) or die ('Error db');
-//     $query = "SELECT COUNT(`isDone`) FROM `tasks` WHERE `idUser`='".$_SESSION["idUser"]."' AND `isDone` = 0";
-//     $res = mysqli_query($con, $query);
-//     foreach($res as $result)
-//     {
-//         return($result['COUNT(`isDone`)']);
-//     }
-// }
-
-// function printBusiSum()
-// {
-//     require('data.php');
-//     $con = mysqli_connect($host, $user, $pas) or die ('Error con');
-//     mysqli_select_db($con, $db) or die ('Error db');
-//     $query = "SELECT COUNT(`isDone`) FROM `tasks` WHERE `idUser`='".$_SESSION["idUser"]."' AND `isDone` = 0";
-//     $res = mysqli_query($con, $query);
-//     foreach($res as $result)
-//     {
-//         return($result['COUNT(`isDone`)']);
-//     }
-// }
-
-?>
-
 </div>
 
 <?php
@@ -205,12 +123,6 @@ if(isset($_REQUEST['addD']))
 }
 
 ?>
-
-
-
-
-
-
 
 <?php
 if(isset($_REQUEST['done']))
