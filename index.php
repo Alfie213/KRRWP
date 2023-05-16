@@ -14,7 +14,7 @@ foreach($res as $result) {
     $summa1 += array_sum($result); 
 } 
 
-$query = "SELECT `sum` FROM `expenses` WHERE `article`='Развлечения'"; 
+$query = "SELECT `sum` FROM `expenses` WHERE `article`='Какая-то'"; 
 $res = mysqli_query($con, $query); 
 $summa2 = 0; 
 foreach($res as $result) { 
